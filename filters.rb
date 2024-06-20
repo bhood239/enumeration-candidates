@@ -13,16 +13,16 @@
   
   def experienced?(candidate)
     # Your code Here
-    candidate.years_of_experience >= 2
+    candidate[:years_of_experience] >= 2
   end
   
   def qualified_candidates(candidates)
     # Your code Here
     candidates.select do |candidate|
-        github_points_over_100(candidate.github_points) &&
-        ruby_or_python(candidate.languages) &&
-        applied_less_than_15_days_ago(candidate.date_applied) &&
-        over_18_years_old(candidate.age)
+        github_points_over_100(candidate[:github_points]) &&
+        ruby_or_python(candidate[:languages]) &&
+        applied_less_than_15_days_ago(candidate[:date_applied]) &&
+        over_18_years_old(candidate[:age])
       end
   end
   
@@ -45,5 +45,5 @@
   end
 
   def ordered_by_qualifications(candidates)
-    candidates.sort_by { |candidate| [-candidate.years_of_experience, -candidate.github_points] }
+    candidates.sort_by { |candidate| [-candidate[:years_of_experience], -candidate[:github_points]] }
   end
